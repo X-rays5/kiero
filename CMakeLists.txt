@@ -3,8 +3,6 @@ project(kiero)
 
 include(get_cpm.cmake)
 
-set(CMAKE_CXX_STANDARD 17)
-
 add_library(${PROJECT_NAME} STATIC kiero.cpp kiero.h)
 add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 
@@ -70,6 +68,7 @@ if (KIERO_USE_MINHOOK AND NOT KIERO_USE_EXTERNAL_MINHOOK)
   cpmaddpackage("gh:X-rays5/minhook#9735edc30fd3e42b8a0bdf42a4d4814ce640d255")
   target_link_libraries(${PROJECT_NAME} PRIVATE minhook)
 elseif (KIERO_USE_POLYHOOK2 AND NOT KIERO_USE_EXTERNAL_POLYHOOK2)
+  set(POLYHOOK_BUILD_STATIC_RUNTIME OFF)
   cpmaddpackage("gh:stevemk14ebr/PolyHook_2_0#71553ebf0d197e73c49365cc3ab2a6aa326b3c37")
   target_link_libraries(${PROJECT_NAME} PRIVATE PolyHook_2)
 endif ()
