@@ -702,19 +702,47 @@ kiero::Status::Enum kiero::init(RenderType::Enum _renderType) {
       RenderType::Enum type = RenderType::None;
 
       if (::GetModuleHandle(KIERO_TEXT("d3d9.dll")) != nullptr) {
+        #if KIERO_SUPPORT_D3D9
         type = RenderType::D3D9;
+        #else
+        return Status::NotSupportedError;
+        #endif
       } else if (::GetModuleHandle(KIERO_TEXT("d3d10.dll")) != nullptr) {
+        #if KIERO_SUPPORT_D3D10
         type = RenderType::D3D10;
+        #else
+        return Status::NotSupportedError;
+        #endif
       } else if (::GetModuleHandle(KIERO_TEXT("d3d10_1.dll")) != nullptr) {
+        #if KIERO_SUPPORT_D3D10_1
         type = RenderType::D3D10_1;
+        #else
+        return Status::NotSupportedError;
+        #endif
       } else if (::GetModuleHandle(KIERO_TEXT("d3d11.dll")) != nullptr) {
+        #if KIERO_SUPPORT_D3D11
         type = RenderType::D3D11;
+        #else
+        return Status::NotSupportedError;
+        #endif
       } else if (::GetModuleHandle(KIERO_TEXT("d3d12.dll")) != nullptr) {
+        #if KIERO_SUPPORT_D3D12
         type = RenderType::D3D12;
+        #else
+        return Status::NotSupportedError;
+        #endif
       } else if (::GetModuleHandle(KIERO_TEXT("opengl32.dll")) != nullptr) {
+        #if KIERO_SUPPORT_OPENGL
         type = RenderType::OpenGL;
+        #else
+        return Status::NotSupportedError;
+        #endif
       } else if (::GetModuleHandle(KIERO_TEXT("vulkan-1.dll")) != nullptr) {
+        #if KIERO_SUPPORT_VULKAN
         type = RenderType::Vulkan;
+        #else
+        return Status::NotSupportedError;
+        #endif
       } else {
         return Status::NotSupportedError;
       }
