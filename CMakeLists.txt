@@ -11,56 +11,67 @@ target_include_directories(${PROJECT_NAME} INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}
 
 option(KIERO_SUPPORT_D3D9 "Support D3D9" OFF)
 if (KIERO_SUPPORT_D3D9)
+  message(STATUS "KIERO_SUPPORT_D3D9 is enabled")
   target_compile_definitions(${PROJECT_NAME} PRIVATE KIERO_SUPPORT_D3D9)
 endif ()
 
 option(KIERO_SUPPORT_D3D10 "Support D3D10" OFF)
 if (KIERO_SUPPORT_D3D10)
+  message(STATUS "KIERO_SUPPORT_D3D10 is enabled")
   target_compile_definitions(${PROJECT_NAME} PRIVATE KIERO_SUPPORT_D3D10)
 endif ()
 
 option(KIERO_SUPPORT_D3D10_1 "Support D3D10.1" OFF)
 if (KIERO_SUPPORT_D3D10_1)
+  message(STATUS "KIERO_SUPPORT_D3D10_1 is enabled")
   target_compile_definitions(${PROJECT_NAME} PRIVATE KIERO_SUPPORT_D3D10_1)
 endif ()
 
 option(KIERO_SUPPORT_D3D11 "Support D3D11" OFF)
 if (KIERO_SUPPORT_D3D11)
+  message(STATUS "KIERO_SUPPORT_D3D11 is enabled")
   target_compile_definitions(${PROJECT_NAME} PRIVATE KIERO_SUPPORT_D3D11)
 endif ()
 
 option(KIERO_SUPPORT_D3D12 "Support D3D12" OFF)
 if (KIERO_SUPPORT_D3D12)
+  message(STATUS "KIERO_SUPPORT_D3D12 is enabled")
   target_compile_definitions(${PROJECT_NAME} PRIVATE KIERO_SUPPORT_D3D12)
 endif ()
 
 option(KIERO_SUPPORT_OPENGL "Support OpenGL" OFF)
 if (KIERO_SUPPORT_OPENGL)
+  message(STATUS "KIERO_SUPPORT_OPENGL is enabled")
   target_compile_definitions(${PROJECT_NAME} PRIVATE KIERO_SUPPORT_OPENGL)
 endif ()
 
 option(KIERO_SUPPORT_VULKAN "Support Vulkan" OFF)
 if (KIERO_SUPPORT_VULKAN)
+  message(STATUS "KIERO_SUPPORT_VULKAN is enabled")
   target_compile_definitions(${PROJECT_NAME} PRIVATE KIERO_SUPPORT_VULKAN)
 endif ()
 
 option(KIERO_USE_MINHOOK "Use MinHook" OFF)
 if (KIERO_USE_MINHOOK)
+  message(STATUS "KIERO_USE_MINHOOK is enabled")
   target_compile_definitions(${PROJECT_NAME} PRIVATE KIERO_USE_MINHOOK)
 endif ()
 
 option(KIERO_USE_EXTERNAL_MINHOOK "Use external MinHook" OFF)
 if (KIERO_USE_EXTERNAL_MINHOOK)
+  message(STATUS "KIERO_USE_EXTERNAL_MINHOOK is enabled")
   target_compile_definitions(${PROJECT_NAME} PRIVATE KIERO_USE_EXTERNAL_MINHOOK)
 endif ()
 
 option(KIERO_USE_POLYHOOK2 "Use PolyHook2" ON)
 if (KIERO_USE_POLYHOOK2)
+  message(STATUS "KIERO_USE_POLYHOOK2 is enabled")
   target_compile_definitions(${PROJECT_NAME} PRIVATE KIERO_USE_POLYHOOK2)
 endif ()
 
 option(KIERO_USE_EXTERNAL_POLYHOOK2 "Use external PolyHook2" OFF)
 if (KIERO_USE_EXTERNAL_POLYHOOK2)
+  message(STATUS "KIERO_USE_EXTERNAL_POLYHOOK2 is enabled")
   target_compile_definitions(${PROJECT_NAME} PRIVATE KIERO_USE_EXTERNAL_POLYHOOK2)
 endif ()
 
