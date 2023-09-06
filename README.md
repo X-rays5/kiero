@@ -1,10 +1,10 @@
 <h1 align="center">kiero</h1>
 <p align="center">
   <a href="https://github.com/Rebzzel/kiero/blob/master/LICENSE">
-    <img src="https://img.shields.io/github/license/Rebzzel/kiero.svg?style=flat-square"/>
+    <img src="https://img.shields.io/github/license/X-rays5/kiero.svg?style=flat-square"/>
   </a>
   <a href="https://github.com/Rebzzel/kiero/stargazers">
-    <img src="https://img.shields.io/github/stars/Rebzzel/kiero.svg?style=flat-square"/>
+    <img src="https://img.shields.io/github/stars/X-rays5/kiero.svg?style=flat-square"/>
   </a>
   <br>
   Universal graphical hook for a D3D9-D3D12, OpenGL and Vulkan based games
@@ -17,18 +17,23 @@
 
 [Vulkan SDK](https://www.lunarg.com/vulkan-sdk) (For Vulkan hook)
 
-[MinHook](https://github.com/TsudaKageyu/minhook) (For kiero::bind function)
-
 ### Example
-To start, go to the kiero.h and select the desired hooks
-```C++
-// Example for D3D9 hook
-#define KIERO_INCLUDE_D3D9   1 // 1 if you need D3D9 hook
-#define KIERO_INCLUDE_D3D10  0 // 1 if you need D3D10 hook
-#define KIERO_INCLUDE_D3D11  0 // 1 if you need D3D11 hook
-#define KIERO_INCLUDE_D3D12  0 // 1 if you need D3D12 hook
-#define KIERO_INCLUDE_OPENGL 0 // 1 if you need OpenGL hook
-#define KIERO_INCLUDE_VULKAN 0 // 1 if you need Vulkan hook
+To start, the following options are available trough cmake:
+```cmake
+option(KIERO_SUPPORT_D3D9 "Support D3D9" OFF)
+option(KIERO_SUPPORT_D3D10 "Support D3D10" OFF)
+option(KIERO_SUPPORT_D3D10_1 "Support D3D10.1" OFF)
+option(KIERO_SUPPORT_D3D11 "Support D3D11" OFF)
+option(KIERO_SUPPORT_D3D12 "Support D3D12" OFF)
+
+option(KIERO_SUPPORT_OPENGL "Support OpenGL" OFF)
+option(KIERO_SUPPORT_VULKAN "Support Vulkan" OFF)
+
+option(KIERO_USE_MINHOOK "Use MinHook" OFF) # Needed for kiero::bind (alternative to polyhook)
+option(KIERO_USE_EXTERNAL_MINHOOK "Use external MinHook" OFF)
+
+option(KIERO_USE_POLYHOOK2 "Use PolyHook2" ON) # Needed for kiero::bind (alternative to minhook)
+option(KIERO_USE_EXTERNAL_POLYHOOK2 "Use external PolyHook2" OFF)
 ```
 
 Then proceed to the main work
@@ -93,26 +98,4 @@ BOOL WINAPI DllMain(HINSTANCE hInstance, DWORD fdwReason, LPVOID)
 ```
 
 ### License
-```
-MIT License
-
-Copyright (c) 2014-2021 Rebzzel
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
+[MIT](https://github.com/X-rays5/kiero?tab=License-1-ov-file)
