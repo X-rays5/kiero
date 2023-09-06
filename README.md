@@ -98,4 +98,4 @@ BOOL WINAPI DllMain(HINSTANCE hInstance, DWORD fdwReason, LPVOID)
 ```
 
 ### License
-[MIT](https://github.com/X-rays5/kiero/blob/master/LICENSE)
+[MIT](https://github.com/X-rays5/kiero?tab=License-1-ov-file)
