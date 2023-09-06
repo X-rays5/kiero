@@ -1,22 +1,14 @@
 #ifndef __KIERO_H__
 #define __KIERO_H__
 
-#include <stdint.h>
+#include <cstdint>
 
 #define KIERO_VERSION "1.2.12"
-
-#define KIERO_INCLUDE_D3D9   0 // 1 if you need D3D9 hook
-#define KIERO_INCLUDE_D3D10  0 // 1 if you need D3D10 hook
-#define KIERO_INCLUDE_D3D11  0 // 1 if you need D3D11 hook
-#define KIERO_INCLUDE_D3D12  0 // 1 if you need D3D12 hook
-#define KIERO_INCLUDE_OPENGL 0 // 1 if you need OpenGL hook
-#define KIERO_INCLUDE_VULKAN 0 // 1 if you need Vulkan hook
-#define KIERO_USE_MINHOOK    0 // 1 if you will use kiero::bind function
 
 #define KIERO_ARCH_X64 0
 #define KIERO_ARCH_X86 0
 
-#if defined(_M_X64)	
+#if defined(_M_X64)
 # undef  KIERO_ARCH_X64
 # define KIERO_ARCH_X64 1
 #else
@@ -30,49 +22,45 @@ typedef uint64_t uint150_t;
 typedef uint32_t uint150_t;
 #endif
 
-namespace kiero
-{
-	struct Status
-	{
-		enum Enum
-		{
-			UnknownError = -1,
-			NotSupportedError = -2,
-			ModuleNotFoundError = -3,
+namespace kiero {
+  struct Status {
+    enum Enum {
+      UnknownError = -1,
+      NotSupportedError = -2,
+      ModuleNotFoundError = -3,
 
-			AlreadyInitializedError = -4,
-			NotInitializedError = -5,
+      AlreadyInitializedError = -4,
+      NotInitializedError = -5,
 
-			Success = 0,
-		};
-	};
+      Success = 0,
+    };
+  };
 
-	struct RenderType
-	{
-		enum Enum
-		{
-			None,
+  struct RenderType {
+    enum Enum {
+      None,
 
-			D3D9,
-			D3D10,
-			D3D11,
-			D3D12,
+      D3D9,
+      D3D10,
+      D3D10_1,
+      D3D11,
+      D3D12,
 
-			OpenGL,
-			Vulkan,
+      OpenGL,
+      Vulkan,
 
-			Auto
-		};
-	};
+      Auto
+    };
+  };
 
-	Status::Enum init(RenderType::Enum renderType);
-	void shutdown();
+  Status::Enum init(RenderType::Enum renderType);
+  void shutdown();
 
-	Status::Enum bind(uint16_t index, void** original, void* function);
-	void unbind(uint16_t index);
+  [[maybe_unused]] Status::Enum bind(uint16_t index, void** original, void* function);
+  [[maybe_unused]] void unbind(uint16_t index);
 
-	RenderType::Enum getRenderType();
-	uint150_t* getMethodsTable();
+  [[maybe_unused]] RenderType::Enum getRenderType();
+  [[maybe_unused]] uint150_t* getMethodsTable();
 }
 
 #endif // __KIERO_H__
